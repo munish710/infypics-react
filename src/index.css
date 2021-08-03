@@ -138,6 +138,98 @@ p {
 Stock Photos
 ===============
 */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--clr-white);
+  box-shadow: var(--dark-shadow);
+  z-index: 2;
+}
+
+.nav-center {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.nav-toggle {
+  background: transparent;
+  border: transparent;
+  font-size: 1.75rem;
+  color: var(--clr-primary-5);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.nav-toggle:hover {
+  transform: scale(1.2);
+}
+
+.nav-links {
+  height: 0;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.show-links {
+  height: 280px;
+}
+.nav-link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 2rem;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  transition: var(--transition);
+  color: var(--clr-grey-1);
+  font-size: 1rem;
+}
+
+.generic-icon {
+  background: transparent;
+  border: transparent;
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  color: var(--clr-primary-5);
+  cursor: pointer;
+}
+
+.logo {
+  font-size: 1.75rem;
+  color: var(--clr-primary-5);
+}
+
+.nav-link:hover {
+  color: var(--clr-primary-1);
+  background: var(--clr-primary-8);
+  padding-left: 2.25rem;
+}
+
+/* .nav-center {
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+} */
+
+/*
+=============== 
+Stock Photos
+===============
+*/
 .search {
   padding: 5rem 0 0 0;
   width: 90vw;
