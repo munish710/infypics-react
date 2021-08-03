@@ -26,35 +26,43 @@ function Navbar() {
             </button>
           </div>
         </div>
-        <div
+
+        <ul
           className={`${showNavLinks ? "nav-links show-links" : "nav-links"}`}
         >
-          <ul>
-            <li className="nav-link">
+          <li>
+            <a className="nav-link">
               <span className="generic-icon">
                 <GrHome />
               </span>
               Home
-            </li>
-            <li className="nav-link">
+            </a>
+          </li>
+          <li>
+            <a className="nav-link">
               <span className="generic-icon">
                 <GrSearch />
               </span>
               Explore
-            </li>
-            <li className="nav-link">
+            </a>
+          </li>
+          <li>
+            <a className="nav-link">
               <span className="generic-icon">
                 <FcLike />
               </span>
               Wishlist
-            </li>
-            <li className="nav-link">
-              <span className="generic-icon">
-                <GrLogout />
-              </span>
-              Logout
-            </li>
-          </ul>
+            </a>
+          </li>
+        </ul>
+
+        <div className={showNavLinks ? "nav-footer show" : "nav-footer"}>
+          <a className="nav-link">
+            <span className="generic-icon">
+              <GrLogout />
+            </span>
+            Logout
+          </a>
         </div>
       </div>
     </nav>
