@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GrLogin, GrHome, GrSearch, GrLogout, GrCamera } from "react-icons/gr";
-import { FcLike } from "react-icons/fc";
+import { FaRegBookmark } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 //Logo----------Home, Explore, Favorites, --------Login/Logout
@@ -50,9 +50,9 @@ function Navbar() {
           <li>
             <Link className="nav-link" to="/wishlist">
               <span className="generic-icon">
-                <FcLike />
+                <FaRegBookmark />
               </span>
-              Wishlist
+              Saved
             </Link>
           </li>
         </ul>

@@ -210,7 +210,6 @@ Stock Photos
   border: transparent;
   font-size: 1.5rem;
   margin-right: 0.5rem;
-  color: var(--clr-primary-5);
   cursor: pointer;
 }
 
@@ -262,20 +261,23 @@ Stock Photos
 
 /*
 =============== 
-Stock Photos
+Search
 ===============
 */
+
 .search {
   padding: 5rem 0 0 0;
   width: 90vw;
   max-width: var(--max-width);
   margin: 0 auto;
+  margin-top: 3rem;
 }
 .search-form {
   display: flex;
 }
 .form-input {
   width: 100%;
+  outline: transparent;
 }
 .form-input,
 .submit-btn {
@@ -295,6 +297,13 @@ Stock Photos
 .form-input::placeholder {
   color: var(--clr-grey-5);
 }
+
+/*
+=============== 
+Photos
+===============
+*/
+
 .photos {
   padding: 5rem 0;
   margin-top: 1.5rem;
@@ -329,6 +338,12 @@ Stock Photos
   height: 2.5rem;
   border-radius: 50%;
 }
+
+.photo-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .photo-info {
   position: absolute;
   width: 100%;
@@ -345,6 +360,14 @@ Stock Photos
 }
 .photo:hover .photo-info {
   transform: translateY(0);
+}
+
+.bookmark {
+  color: var(--clr-white);
+}
+
+.bookmark:hover {
+  color: var(--clr-red-dark);
 }
 @media screen and (min-width: 576px) {
   .photos-center {

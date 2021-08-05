@@ -11,7 +11,8 @@
     "react-icons": "^3.11.0",
     "react-loader-spinner": "^4.0.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "react-simple-snackbar": "^1.1.11"
   },
   "scripts": {
     "start": "react-scripts start",
