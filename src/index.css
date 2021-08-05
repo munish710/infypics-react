@@ -354,6 +354,72 @@ Stock Photos
   }
 }
 
+/*
+=============== 
+Image Viewer
+===============
+*/
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: #222;
+  opacity: 0.8;
+  display: grid;
+  place-items: center;
+  z-index: 5;
+}
+
+.image-display-container {
+  height: 85vh;
+  width: 90vw;
+  background: var(--clr-white);
+  /* background: transparent; */
+}
+
+.image-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  align-items: center;
+}
+
+.image-display {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  /* align-items: center; */
+  height: 90%;
+}
+
+.image-btns-container {
+  align-self: center;
+}
+
+.image-btns {
+  background: transparent;
+  border: none;
+  color: var(--clr-primary-4);
+  font-size: 3rem;
+  cursor: pointer;
+}
+.close-btn {
+  background: transparent;
+  border: none;
+  color: red;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.image-box {
+  height: 100%;
+  width: 100%;
+  align-self: center;
+  background-color: palegreen;
+}
+
 .loading {
   width: 20rem;
   height: 20rem;
