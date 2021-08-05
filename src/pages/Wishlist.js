@@ -1,11 +1,13 @@
 import React from "react";
-import ImageViewer from "../components/ImageViewer";
+import { useAppContext } from "../context/context";
 
 const Wishlist = () => {
+  const { savedImages } = useAppContext();
+  console.log(savedImages);
   return (
     <main>
-      <section className="section">
-        <h2>Wishlist comp</h2>
+      <section className="photos">
+        <div className="photos-center">{}</div>
       </section>
     </main>
   );

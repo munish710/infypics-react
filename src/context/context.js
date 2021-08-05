@@ -13,6 +13,7 @@ function AppProvider({ children }) {
   const [query, setQuery] = useState("");
   const [showImageViewer, setShowImageViewer] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [savedImages, setSavedImages] = useState([]);
 
   const fetchImages = async () => {
     let url;
@@ -89,6 +90,8 @@ function AppProvider({ children }) {
         setShowImageViewer,
         openImageViewer,
         currentImageIndex,
+        savedImages,
+        setSavedImages,
       }}
     >
       {children}

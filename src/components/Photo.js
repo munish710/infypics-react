@@ -20,35 +20,29 @@ const options = {
   },
 };
 
-const Photo = ({
-  urls: { regular },
-  alt_description,
-  likes,
-  user: {
-    name,
-    portfolio_url,
-    profile_image: { medium },
-  },
-  index,
-}) => {
-  const { openImageViewer } = useAppContext();
+const Photo = ({ id, urls, alt_description, likes, user, links, index }) => {
+  const { openImageViewer, setSavedImages, savedImages } = useAppContext();
   const [openSnackbar, closeSnackbar] = useSnackbar(options);
+  const openHandler = () => {
+    openSnackbar("Image Saved Successfully");
+    const tempImages = [...savedImages];
+    const newImage = { id, urls, user, links };
+    tempImages.push(newImage);
+    setSavedImages([...tempImages]);
+  };
   return (
     <article className="photo">
       <img
-        src={regular}
+        src={urls.regular}
         alt={alt_description}
         onClick={() => openImageViewer(index)}
       />
       <div className="photo-info">
         <div>
-          <h4>{name}</h4>
+          <h4>{user.name}</h4>
           <p>{likes} likes</p>
         </div>
-        <button
-          className="generic-icon bookmark"
-          onClick={() => openSnackbar("Image Saved Successfully")}
-        >
+        <button className="generic-icon bookmark" onClick={openHandler}>
           {/* <img src={medium} alt={name} className="user-img" /> */}
           <FaRegBookmark />
         </button>
