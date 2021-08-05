@@ -11,6 +11,8 @@ function AppProvider({ children }) {
   const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
+  const [showImageViewer, setShowImageViewer] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const fetchImages = async () => {
     let url;
@@ -49,6 +51,12 @@ function AppProvider({ children }) {
     fetchImages();
   };
 
+  const openImageViewer = (index) => {
+    setShowImageViewer(true);
+    console.log("Image", index);
+    setCurrentImageIndex(index);
+  };
+
   useEffect(() => {
     fetchImages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -77,6 +85,10 @@ function AppProvider({ children }) {
         setQuery,
         photos,
         loading,
+        showImageViewer,
+        setShowImageViewer,
+        openImageViewer,
+        currentImageIndex,
       }}
     >
       {children}

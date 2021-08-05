@@ -1,4 +1,5 @@
 import React from "react";
+import { useAppContext } from "../context/context";
 
 const Photo = ({
   urls: { regular },
@@ -9,9 +10,11 @@ const Photo = ({
     portfolio_url,
     profile_image: { medium },
   },
+  index,
 }) => {
+  const { openImageViewer } = useAppContext();
   return (
-    <article className="photo">
+    <article className="photo" onClick={() => openImageViewer(index)}>
       <img src={regular} alt={alt_description} />
       <div className="photo-info">
         <div>

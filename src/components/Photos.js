@@ -7,7 +7,7 @@ function Photos({ photos, loading }) {
     <section className="photos">
       <div className="photos-center">
         {photos.map((photo, index) => {
-          return <Photo key={index} {...photo} />;
+          return <Photo key={index} {...photo} index={index} />;
         })}
         {loading && (
           <Loader
