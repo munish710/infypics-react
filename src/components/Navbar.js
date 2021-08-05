@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { GrLogin, GrHome, GrSearch, GrLogout, GrCamera } from "react-icons/gr";
 import { FcLike } from "react-icons/fc";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
 //Logo----------Home, Explore, Favorites, --------Login/Logout
 
 function Navbar() {
@@ -31,38 +32,38 @@ function Navbar() {
           className={`${showNavLinks ? "nav-links show-links" : "nav-links"}`}
         >
           <li>
-            <a className="nav-link">
+            <Link className="nav-link" to="/">
               <span className="generic-icon">
                 <GrHome />
               </span>
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="nav-link">
+            <Link className="nav-link" to="/explore">
               <span className="generic-icon">
                 <GrSearch />
               </span>
               Explore
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="nav-link">
+            <Link className="nav-link" to="/wishlist">
               <span className="generic-icon">
                 <FcLike />
               </span>
               Wishlist
-            </a>
+            </Link>
           </li>
         </ul>
 
         <div className={showNavLinks ? "nav-footer show" : "nav-footer"}>
-          <a className="nav-link">
+          <Link className="nav-link">
             <span className="generic-icon">
               <GrLogout />
             </span>
             Logout
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

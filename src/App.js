@@ -1,22 +1,28 @@
 import React from "react";
-import SearchForm from "./components/SearchForm";
-import Photos from "./components/Photos";
-import { useAppContext } from "./context/context";
-import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
+import Explore from "./pages/Explore";
+import Wishlist from "./pages/Wishlist";
+import Error from "./pages/Error";
 
 function App() {
-  const { query, handleSubmit, setQuery, photos, loading } = useAppContext();
-
   return (
-    <main>
-      <Navbar />
-      <SearchForm
-        query={query}
-        handleSubmit={handleSubmit}
-        setQuery={setQuery}
-      />
-      <Photos photos={photos} loading={loading} />
-    </main>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/explore" exact>
+          <Explore />
+        </Route>
+        <Route path="/wishlist" exact>
+          <Wishlist />
+        </Route>
+        <Route path="*">
+          <Error />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
