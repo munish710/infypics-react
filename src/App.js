@@ -9,32 +9,37 @@ import ImageViewer from "./components/ImageViewer";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Authwrapper from "./pages/Authwrapper";
+import ReqExceeded from "./pages/ReqExceeded";
 
 //things left
 //  Requests over? localstorage? favicon title
 
 function App() {
-  const { photos } = useAppContext();
+  const { photos, reqExceeded } = useAppContext();
   return (
     <Authwrapper>
       {photos.length > 0 && <ImageViewer />}
       <Router>
         <Navbar />
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/explore" exact>
-            <Explore />
-          </Route>
-          <ProtectedRoute path="/wishlist" exact>
-            <Wishlist />
-          </ProtectedRoute>
+        {reqExceeded ? (
+          <ReqExceeded />
+        ) : (
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/explore" exact>
+              <Explore />
+            </Route>
+            <ProtectedRoute path="/wishlist" exact>
+              <Wishlist />
+            </ProtectedRoute>
 
-          <Route path="*">
-            <Error />
-          </Route>
-        </Switch>
+            <Route path="*">
+              <Error />
+            </Route>
+          </Switch>
+        )}
       </Router>
     </Authwrapper>
   );

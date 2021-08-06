@@ -10,6 +10,7 @@ function AppProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
+  const [reqExceeded, setReqExceeded] = useState(false);
   const [query, setQuery] = useState("");
   const [showImageViewer, setShowImageViewer] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -42,7 +43,8 @@ function AppProvider({ children }) {
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      console.log(err);
+      setReqExceeded(true);
+      console.log("Fetch Error", err);
     }
   };
 
@@ -98,6 +100,7 @@ function AppProvider({ children }) {
         savedImages,
         setSavedImages,
         removeSavedImage,
+        reqExceeded,
       }}
     >
       {children}
