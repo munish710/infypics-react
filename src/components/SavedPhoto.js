@@ -3,14 +3,14 @@ import { CgClose } from "react-icons/cg";
 import { HiOutlineLink } from "react-icons/hi";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { useAppContext } from "../context/context";
-import { useSnackbar } from "react-simple-snackbar/dist";
+import { useSnackbar } from "react-simple-snackbar";
 import { options } from "../utils/options";
 
 const SavedPhoto = ({ id, urls, user, links }) => {
   const { removeSavedImage } = useAppContext();
-  const [openSnackbar] = useSnackbar(options);
+  const [openSnackbar, closeSnackbar] = useSnackbar(options);
   const deleteImage = () => {
-    openSnackbar("Image removed!");
+    openSnackbar("Image removed successfully!");
     removeSavedImage(id);
   };
 

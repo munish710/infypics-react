@@ -3,10 +3,13 @@ import { GrLogin, GrHome, GrSearch, GrLogout, GrCamera } from "react-icons/gr";
 import { FaRegBookmark } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 //Logo----------Home, Explore, Favorites, --------Login/Logout
+//mobile add close on link click
 
 function Navbar() {
   const [showNavLinks, setShowNavLinks] = useState(false);
+  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   return (
     <nav className="navbar">
@@ -32,7 +35,11 @@ function Navbar() {
           className={`${showNavLinks ? "nav-links show-links" : "nav-links"}`}
         >
           <li>
-            <Link className="nav-link" to="/">
+            <Link
+              className="nav-link"
+              to="/"
+              onClick={() => setShowNavLinks(!showNavLinks)}
+            >
               <span className="generic-icon">
                 <GrHome />
               </span>
@@ -40,7 +47,11 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link className="nav-link" to="/explore">
+            <Link
+              className="nav-link"
+              to="/explore"
+              onClick={() => setShowNavLinks(!showNavLinks)}
+            >
               <span className="generic-icon">
                 <GrSearch />
               </span>
@@ -48,7 +59,11 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link className="nav-link" to="/wishlist">
+            <Link
+              className="nav-link"
+              to="/wishlist"
+              onClick={() => setShowNavLinks(!showNavLinks)}
+            >
               <span className="generic-icon">
                 <FaRegBookmark />
               </span>
@@ -58,12 +73,24 @@ function Navbar() {
         </ul>
 
         <div className={showNavLinks ? "nav-footer show" : "nav-footer"}>
-          <Link className="nav-link">
-            <span className="generic-icon">
-              <GrLogout />
-            </span>
-            Logout
-          </Link>
+          {user ? (
+            <button
+              className="nav-link nav-btn"
+              onClick={() => logout({ returnTo: window.location.origin })}
+            >
+              <span className="generic-icon">
+                <GrLogout />
+              </span>
+              Logout
+            </button>
+          ) : (
+            <button className="nav-link nav-btn" onClick={loginWithRedirect}>
+              <span className="generic-icon">
+                <GrLogin />
+              </span>
+              Login
+            </button>
+          )}
         </div>
       </div>
     </nav>

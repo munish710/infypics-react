@@ -196,6 +196,8 @@ Stock Photos
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  border: transparent;
+  background: transparent;
   padding: 1rem 2rem;
   text-transform: capitalize;
   letter-spacing: var(--spacing);
@@ -203,6 +205,10 @@ Stock Photos
   color: var(--clr-grey-1);
   font-size: 1rem;
   cursor: pointer;
+}
+
+.nav-btn {
+  width: 100%;
 }
 
 .generic-icon {
