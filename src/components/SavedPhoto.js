@@ -2,8 +2,17 @@ import React from "react";
 import { CgClose } from "react-icons/cg";
 import { HiOutlineLink } from "react-icons/hi";
 import { AiOutlineArrowDown } from "react-icons/ai";
-const SavedPhoto = ({ urls, user, links }) => {
-  console.log(user);
+import { useAppContext } from "../context/context";
+import { useSnackbar } from "react-simple-snackbar/dist";
+import { options } from "../utils/options";
+
+const SavedPhoto = ({ id, urls, user, links }) => {
+  const { removeSavedImage } = useAppContext();
+  const [openSnackbar] = useSnackbar(options);
+  const deleteImage = () => {
+    openSnackbar("Image removed!");
+    removeSavedImage(id);
+  };
   return (
     <article class="saved-photo">
       <div className="saved-photo-header">
@@ -11,7 +20,7 @@ const SavedPhoto = ({ urls, user, links }) => {
           <img src={user.profile_image.medium} className="user-img" />
           <h4>{user.first_name}</h4>
         </a>
-        <button className="close-btn-2">
+        <button className="close-btn-2" onClick={deleteImage}>
           <CgClose />
         </button>
       </div>
@@ -34,16 +43,5 @@ const SavedPhoto = ({ urls, user, links }) => {
     </article>
   );
 };
-
-{
-  /* <div>
-          <h4>{name}</h4>
-          <p>{likes} likes</p>
-        </div>
-        <a href={portfolio_url}>
-          <img src={medium} alt={name} className="user-img" />
-        </a>
-      </div> */
-}
 
 export default SavedPhoto;

@@ -462,6 +462,7 @@ Saved Photo
 .link-btn-icon {
   display: flex;
   align-items: center;
+  margin-right: 0.4rem;
 }
 
 @media screen and (min-width: 576px) {

@@ -4,7 +4,6 @@ import { useAppContext } from "../context/context";
 
 const Wishlist = () => {
   const { savedImages } = useAppContext();
-  console.log(savedImages);
   return (
     <main>
       <section className="photos">

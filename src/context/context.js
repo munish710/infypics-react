@@ -58,6 +58,11 @@ function AppProvider({ children }) {
     setCurrentImageIndex(index);
   };
 
+  const removeSavedImage = (id) => {
+    let newSavedImages = savedImages.filter((item) => item.id !== id);
+    setSavedImages(newSavedImages);
+  };
+
   useEffect(() => {
     fetchImages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -92,6 +97,7 @@ function AppProvider({ children }) {
         currentImageIndex,
         savedImages,
         setSavedImages,
+        removeSavedImage,
       }}
     >
       {children}
