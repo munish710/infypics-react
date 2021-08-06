@@ -9,6 +9,9 @@ import ImageViewer from "./components/ImageViewer";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+//things left
+//  authwrapper error page view  localstorage? loading favicon title
+
 function App() {
   const { photos } = useAppContext();
   return (

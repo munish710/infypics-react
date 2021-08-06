@@ -1,6 +1,6 @@
 import React from "react";
+import Loading from "./Loading";
 import Photo from "./Photo";
-import Loader from "react-loader-spinner";
 
 function Photos({ photos, loading }) {
   return (
@@ -9,15 +9,7 @@ function Photos({ photos, loading }) {
         {photos.map((photo, index) => {
           return <Photo key={index} {...photo} index={index} />;
         })}
-        {loading && (
-          <Loader
-            type="Oval"
-            color="#617e98"
-            height={80}
-            width={80}
-            className="loading"
-          />
-        )}
+        {loading && <Loading />}
       </div>
     </section>
   );

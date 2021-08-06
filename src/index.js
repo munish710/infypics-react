@@ -6,12 +6,6 @@ import { AppProvider } from "./context/context";
 import SnackbarProvider from "react-simple-snackbar";
 import { Auth0Provider } from "@auth0/auth0-react";
 
-console.log(
-  "env vars",
-  process.env.REACT_APP_AUTH_DOMAIN,
-  process.env.REACT_APP_AUTH_CLIENTID
-);
-
 ReactDOM.render(
   <Auth0Provider
     domain={process.env.REACT_APP_AUTH_DOMAIN}
