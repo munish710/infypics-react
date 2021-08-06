@@ -11,9 +11,6 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Authwrapper from "./pages/Authwrapper";
 import ReqExceeded from "./pages/ReqExceeded";
 
-//things left
-//  localstorage? favicon title warnings
-
 function App() {
   const { photos, reqExceeded } = useAppContext();
   return (

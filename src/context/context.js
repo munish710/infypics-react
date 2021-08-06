@@ -40,7 +40,6 @@ function AppProvider({ children }) {
       const data = await response.json();
 
       setPhotos((oldPhotos) => {
-        debugger;
         if (query && page === 1) {
           return data.results;
         } else if (query) {

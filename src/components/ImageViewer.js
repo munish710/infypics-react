@@ -33,7 +33,7 @@ const ImageViewer = () => {
 
   useEffect(() => {
     setImageUrl(photos[displayIndex].urls.regular);
-  }, [displayIndex]);
+  }, [displayIndex, photos]);
 
   return (
     <div
@@ -60,7 +60,7 @@ const ImageViewer = () => {
           </div>
 
           <article className="image-box">
-            <img src={imageUrl} className="current-image" />
+            <img src={imageUrl} className="current-image" alt="infypic" />
           </article>
           <div className="image-btns-container">
             <button className="image-btns" onClick={nextImage}>

@@ -6,7 +6,7 @@ const ReqExceeded = () => {
     <section className="empty-images">
       <img src={warning} alt="empty box" className="empty-img" />
       <div className="info">
-        <h3>API Requests Excceded</h3>
+        <h3>API Requests Exceeded</h3>
         <h4>Try again after 1 hour</h4>
       </div>
     </section>

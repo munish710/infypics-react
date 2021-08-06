@@ -7,7 +7,7 @@ export const options = {
     fontSize: "20px",
     textAlign: "center",
     zIndex: 100,
-    marginBottom: "80vh",
+    marginBottom: "75vh",
   },
   closeStyle: {
     color: "red",

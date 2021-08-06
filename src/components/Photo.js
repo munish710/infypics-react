@@ -6,7 +6,7 @@ import { options } from "../utils/options";
 
 const Photo = ({ id, urls, alt_description, likes, user, links, index }) => {
   const { openImageViewer, setSavedImages, savedImages } = useAppContext();
-  const [openSnackbar, closeSnackbar] = useSnackbar(options);
+  const [openSnackbar] = useSnackbar(options);
   const openHandler = () => {
     openSnackbar("Image Saved Successfully");
     const tempImages = [...savedImages];
@@ -27,7 +27,6 @@ const Photo = ({ id, urls, alt_description, likes, user, links, index }) => {
           <p>{likes} likes</p>
         </div>
         <button className="generic-icon bookmark" onClick={openHandler}>
-          {/* <img src={medium} alt={name} className="user-img" /> */}
           <FaRegBookmark />
         </button>
       </div>

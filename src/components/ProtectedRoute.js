@@ -6,7 +6,7 @@ import { options } from "../utils/options";
 
 const ProtectedRoute = ({ children, ...rest }) => {
   const { isAuthenticated } = useAuth0();
-  const [openSnackbar, closeSnackbar] = useSnackbar(options);
+  const [openSnackbar] = useSnackbar(options);
 
   return (
     <Route

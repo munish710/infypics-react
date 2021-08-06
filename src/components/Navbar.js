@@ -9,7 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function Navbar() {
   const [showNavLinks, setShowNavLinks] = useState(false);
-  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { user, loginWithRedirect, logout } = useAuth0();
 
   return (
     <nav className="navbar">

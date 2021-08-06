@@ -8,7 +8,7 @@ import { options } from "../utils/options";
 
 const SavedPhoto = ({ id, urls, user, links }) => {
   const { removeSavedImage } = useAppContext();
-  const [openSnackbar, closeSnackbar] = useSnackbar(options);
+  const [openSnackbar] = useSnackbar(options);
   const deleteImage = () => {
     openSnackbar("Image removed successfully!");
     removeSavedImage(id);
@@ -20,10 +20,19 @@ const SavedPhoto = ({ id, urls, user, links }) => {
   };
 
   return (
-    <article class="saved-photo">
+    <article className="saved-photo">
       <div className="saved-photo-header">
-        <a href={user.portfolio_url} target="_blank" className="user-info">
-          <img src={user.profile_image.medium} className="user-img" />
+        <a
+          href={user.portfolio_url}
+          target="_blank"
+          className="user-info"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={user.profile_image.medium}
+            className="user-img"
+            alt="profile"
+          />
           <h4>{user.first_name}</h4>
         </a>
         <button className="close-btn-2" onClick={deleteImage}>
@@ -31,7 +40,7 @@ const SavedPhoto = ({ id, urls, user, links }) => {
         </button>
       </div>
 
-      <img src={urls.regular} />
+      <img src={urls.regular} alt="scenery" />
       <div className="saved-photo-footer">
         <button className="link-btn" onClick={copyLink}>
           <span className="link-btn-icon">
@@ -39,7 +48,12 @@ const SavedPhoto = ({ id, urls, user, links }) => {
           </span>
           Copy Link
         </button>
-        <a href={links.download} target="_blank" className="link-btn">
+        <a
+          href={links.download}
+          target="_blank"
+          className="link-btn"
+          rel="noopener noreferrer"
+        >
           <span className="link-btn-icon">
             <AiOutlineArrowDown />
           </span>
