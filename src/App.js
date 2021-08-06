@@ -7,6 +7,7 @@ import Error from "./pages/Error";
 import { useAppContext } from "./context/context";
 import ImageViewer from "./components/ImageViewer";
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const { photos } = useAppContext();
@@ -22,9 +23,10 @@ function App() {
           <Route path="/explore" exact>
             <Explore />
           </Route>
-          <Route path="/wishlist" exact>
+          <ProtectedRoute path="/wishlist" exact>
             <Wishlist />
-          </Route>
+          </ProtectedRoute>
+
           <Route path="*">
             <Error />
           </Route>

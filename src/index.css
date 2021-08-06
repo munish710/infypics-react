@@ -397,7 +397,6 @@ Saved Photo
 .saved-photo {
   height: 22rem;
   height: 400px;
-  cursor: pointer;
   background: var(--clr-grey-10);
   transition: var(--transition);
   border-radius: var(--radius);
@@ -463,6 +462,7 @@ Saved Photo
   justify-content: space-between;
   font-size: 1rem;
   padding: 0.25rem;
+  cursor: pointer;
 }
 
 .link-btn-icon {
