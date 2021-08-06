@@ -12,7 +12,7 @@ import Authwrapper from "./pages/Authwrapper";
 import ReqExceeded from "./pages/ReqExceeded";
 
 //things left
-//  Requests over? localstorage? favicon title
+//  localstorage? favicon title warnings
 
 function App() {
   const { photos, reqExceeded } = useAppContext();

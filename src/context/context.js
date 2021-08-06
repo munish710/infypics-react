@@ -6,6 +6,15 @@ const searchUrl = `https://api.unsplash.com/search/photos/`;
 
 const AppContext = React.createContext();
 
+const getLocalStorage = () => {
+  let localSavedImages = localStorage.getItem("saved");
+  if (localSavedImages) {
+    return JSON.parse(localSavedImages);
+  } else {
+    return [];
+  }
+};
+
 function AppProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
@@ -14,7 +23,7 @@ function AppProvider({ children }) {
   const [query, setQuery] = useState("");
   const [showImageViewer, setShowImageViewer] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [savedImages, setSavedImages] = useState([]);
+  const [savedImages, setSavedImages] = useState(getLocalStorage());
 
   const fetchImages = async () => {
     let url;
@@ -84,6 +93,10 @@ function AppProvider({ children }) {
     return () => window.removeEventListener("scroll", event);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("saved", JSON.stringify(savedImages));
+  }, [savedImages]);
 
   return (
     <AppContext.Provider
