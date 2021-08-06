@@ -11,7 +11,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Authwrapper from "./pages/Authwrapper";
 
 //things left
-//  authwrapper error page view  localstorage? favicon title
+//  Requests over? localstorage? favicon title
 
 function App() {
   const { photos } = useAppContext();
