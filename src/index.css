@@ -471,6 +471,24 @@ Saved Photo
   margin-right: 0.4rem;
 }
 
+.empty-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 5rem; */
+  margin-top: 5rem;
+}
+
+.empty-images > h3 {
+  color: var(--clr-primary-5);
+}
+
+.empty-img {
+  display: block;
+  width: 50vw;
+  height: 100vh;
+}
+
 @media screen and (min-width: 576px) {
   .saved-photos-center {
     grid-template-columns: repeat(auto-fill, minmax(368px, 1fr));
