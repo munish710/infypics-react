@@ -13,6 +13,12 @@ const SavedPhoto = ({ id, urls, user, links }) => {
     openSnackbar("Image removed!");
     removeSavedImage(id);
   };
+
+  const copyLink = () => {
+    navigator.clipboard.writeText(urls.full);
+    openSnackbar("Copied to Clipboard successfully!");
+  };
+
   return (
     <article class="saved-photo">
       <div className="saved-photo-header">
@@ -27,7 +33,7 @@ const SavedPhoto = ({ id, urls, user, links }) => {
 
       <img src={urls.regular} />
       <div className="saved-photo-footer">
-        <button className="link-btn">
+        <button className="link-btn" onClick={copyLink}>
           <span className="link-btn-icon">
             <HiOutlineLink />
           </span>
