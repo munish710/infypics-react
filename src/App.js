@@ -8,14 +8,15 @@ import { useAppContext } from "./context/context";
 import ImageViewer from "./components/ImageViewer";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Authwrapper from "./pages/Authwrapper";
 
 //things left
-//  authwrapper error page view  localstorage? loading favicon title
+//  authwrapper error page view  localstorage? favicon title
 
 function App() {
   const { photos } = useAppContext();
   return (
-    <>
+    <Authwrapper>
       {photos.length > 0 && <ImageViewer />}
       <Router>
         <Navbar />
@@ -35,7 +36,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </>
+    </Authwrapper>
   );
 }
 
