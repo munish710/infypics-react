@@ -12,7 +12,7 @@ const ImageViewer = () => {
     setDispalyIndex(currentImageIndex);
   }, [currentImageIndex]);
 
-  const [imageUrl, setImageUrl] = useState(photos[displayIndex].urls.regular);
+  const [imageUrl, setImageUrl] = useState("");
 
   const prevImage = () => {
     console.log("prev");

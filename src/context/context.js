@@ -64,7 +64,6 @@ function AppProvider({ children }) {
 
   const openImageViewer = (index) => {
     setShowImageViewer(true);
-    console.log("Image", index);
     setCurrentImageIndex(index);
   };
 
