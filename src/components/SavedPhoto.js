@@ -32,6 +32,7 @@ const SavedPhoto = ({ id, urls, user, links }) => {
             src={user.profile_image.medium}
             className="user-img"
             alt="profile"
+            loading="lazy"
           />
           <h4>{user.first_name}</h4>
         </a>

@@ -20,6 +20,7 @@ const Photo = ({ id, urls, alt_description, likes, user, links, index }) => {
         src={urls.regular}
         alt={alt_description}
         onClick={() => openImageViewer(index)}
+        loading="lazy"
       />
       <div className="photo-info">
         <div>
