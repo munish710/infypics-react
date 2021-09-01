@@ -1,4 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useSnackbar } from "react-simple-snackbar";
+import { options } from "../utils/options";
 
 const clientID = `?client_id=${process.env.REACT_APP_ACCESS_KEY}`;
 const mainUrl = `https://api.unsplash.com/photos/`;
@@ -25,6 +27,8 @@ function AppProvider({ children }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [savedImages, setSavedImages] = useState(getLocalStorage());
 
+  const [openSnackbar] = useSnackbar(options);
+
   const fetchImages = async () => {
     let url;
     const urlPage = `&page=${page}`;
@@ -38,7 +42,12 @@ function AppProvider({ children }) {
       setLoading(true);
       const response = await fetch(url);
       const data = await response.json();
-
+      //to handle search items not found
+      if (data.results && data.results.length === 0) {
+        setQuery("");
+        setPage(2);
+        openSnackbar("No Images found for your search!");
+      }
       setPhotos((oldPhotos) => {
         if (query && page === 1) {
           return data.results;
