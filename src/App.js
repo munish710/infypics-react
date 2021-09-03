@@ -15,7 +15,7 @@ function App() {
   const { photos, reqExceeded } = useAppContext();
   return (
     <Authwrapper>
-      {photos.length > 0 && <ImageViewer />}
+      {photos.length > 0 ? <ImageViewer /> : null}
       <Router>
         <Navbar />
         {reqExceeded ? (
