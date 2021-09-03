@@ -1,8 +1,12 @@
 import React from "react";
-import Loading from "./Loading";
-import Photo from "./Photo";
+import { useAppContext } from "../../context/context";
+import Loading from "../Loading/Loading";
+import Photo from "../Photo/Photo";
+import "./photos.css";
 
-function Photos({ photos, loading }) {
+function Photos() {
+  const { photos, loading } = useAppContext();
+
   return (
     <section className="photos">
       <div className="photos-center">

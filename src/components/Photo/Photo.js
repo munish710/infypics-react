@@ -1,8 +1,9 @@
 import React from "react";
-import { useAppContext } from "../context/context";
+import { useAppContext } from "../../context/context";
 import { FaRegBookmark } from "react-icons/fa";
 import { useSnackbar } from "react-simple-snackbar";
-import { options } from "../utils/options";
+import { options } from "../../utils/options";
+import "./photo.css";
 
 const Photo = ({ id, urls, alt_description, likes, user, links, index }) => {
   const { openImageViewer, setSavedImages, savedImages } = useAppContext();
@@ -20,6 +21,7 @@ const Photo = ({ id, urls, alt_description, likes, user, links, index }) => {
         src={urls.regular}
         alt={alt_description}
         onClick={() => openImageViewer(index)}
+        loading="lazy"
       />
       <div className="photo-info">
         <div>

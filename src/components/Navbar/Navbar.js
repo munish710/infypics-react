@@ -4,8 +4,7 @@ import { FaRegBookmark } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-//Logo----------Home, Explore, Favorites, --------Login/Logout
-//mobile add close on link click
+import "./navbar.css";
 
 function Navbar() {
   const [showNavLinks, setShowNavLinks] = useState(false);
@@ -38,7 +37,7 @@ function Navbar() {
             <Link
               className="nav-link"
               to="/"
-              onClick={() => setShowNavLinks(!showNavLinks)}
+              onClick={() => setShowNavLinks(false)}
             >
               <span className="generic-icon">
                 <GrHome />
@@ -50,7 +49,7 @@ function Navbar() {
             <Link
               className="nav-link"
               to="/explore"
-              onClick={() => setShowNavLinks(!showNavLinks)}
+              onClick={() => setShowNavLinks(false)}
             >
               <span className="generic-icon">
                 <GrSearch />
@@ -62,7 +61,7 @@ function Navbar() {
             <Link
               className="nav-link"
               to="/wishlist"
-              onClick={() => setShowNavLinks(!showNavLinks)}
+              onClick={() => setShowNavLinks(false)}
             >
               <span className="generic-icon">
                 <FaRegBookmark />

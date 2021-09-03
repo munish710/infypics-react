@@ -2,9 +2,10 @@ import React from "react";
 import { CgClose } from "react-icons/cg";
 import { HiOutlineLink } from "react-icons/hi";
 import { AiOutlineArrowDown } from "react-icons/ai";
-import { useAppContext } from "../context/context";
+import { useAppContext } from "../../context/context";
 import { useSnackbar } from "react-simple-snackbar";
-import { options } from "../utils/options";
+import { options } from "../../utils/options";
+import "./savedphoto.css";
 
 const SavedPhoto = ({ id, urls, user, links }) => {
   const { removeSavedImage } = useAppContext();
@@ -32,6 +33,7 @@ const SavedPhoto = ({ id, urls, user, links }) => {
             src={user.profile_image.medium}
             className="user-img"
             alt="profile"
+            loading="lazy"
           />
           <h4>{user.first_name}</h4>
         </a>

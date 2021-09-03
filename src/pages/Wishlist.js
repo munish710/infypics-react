@@ -1,5 +1,5 @@
 import React from "react";
-import SavedPhoto from "../components/SavedPhoto";
+import SavedPhoto from "../components/SavedPhoto/SavedPhoto";
 import { useAppContext } from "../context/context";
 import empty_images from "../assets/empty_images.svg";
 
@@ -16,10 +16,10 @@ const Wishlist = () => {
           </div>
         </section>
       ) : (
-        <div className="section empty-images">
+        <section className="section empty-images">
           <img src={empty_images} alt="empty box" className="empty-img" />
           <h3>no saved images</h3>
-        </div>
+        </section>
       )}
     </main>
   );

@@ -13,11 +13,11 @@ ReactDOM.render(
     redirectUri={window.location.origin}
     cacheLocation="localstorage"
   >
-    <AppProvider>
-      <SnackbarProvider>
+    <SnackbarProvider>
+      <AppProvider>
         <App />
-      </SnackbarProvider>
-    </AppProvider>
+      </AppProvider>
+    </SnackbarProvider>
   </Auth0Provider>,
   document.getElementById("root")
 );
