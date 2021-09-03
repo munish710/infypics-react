@@ -1,0 +1,125 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--clr-white);
+  box-shadow: var(--dark-shadow);
+  z-index: 2;
+}
+
+.nav-center {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.nav-toggle {
+  background: transparent;
+  border: transparent;
+  font-size: 1.75rem;
+  color: var(--clr-primary-5);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.nav-toggle:hover {
+  transform: scale(1.2);
+}
+
+.nav-links {
+  height: 0;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.nav-footer {
+  /* padding: 1rem 2rem; */
+  display: none;
+}
+.show {
+  display: block;
+}
+
+.show-links {
+  height: 200px;
+}
+.nav-link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: transparent;
+  background: transparent;
+  padding: 1rem 2rem;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  transition: var(--transition);
+  color: var(--clr-grey-1);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.nav-btn {
+  width: 100%;
+}
+
+.generic-icon {
+  background: transparent;
+  border: transparent;
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.logo {
+  font-size: 1.75rem;
+  color: var(--clr-primary-5);
+}
+
+.nav-link:hover {
+  color: var(--clr-primary-1);
+  background: var(--clr-primary-8);
+  padding-left: 2.25rem;
+}
+
+@media screen and (min-width: 900px) {
+  .nav-center {
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .nav-links {
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
+  .show-links {
+    height: auto;
+  }
+
+  .nav-link {
+    padding: 0;
+    margin-right: 1.5rem;
+  }
+
+  .nav-link:hover {
+    padding-left: 0rem;
+    color: var(--clr-primary-5);
+    background: transparent;
+  }
+
+  .nav-footer {
+    padding: 1rem 2rem;
+    display: block;
+  }
+}

@@ -4,6 +4,7 @@ import { FaRegBookmark } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import "./navbar.css";
 
 function Navbar() {
   const [showNavLinks, setShowNavLinks] = useState(false);

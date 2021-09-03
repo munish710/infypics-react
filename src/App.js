@@ -5,9 +5,9 @@ import Explore from "./pages/Explore";
 import Wishlist from "./pages/Wishlist";
 import Error from "./pages/Error";
 import { useAppContext } from "./context/context";
-import ImageViewer from "./components/ImageViewer";
-import Navbar from "./components/Navbar";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ImageViewer from "./components/ImageViewer/ImageViewer";
+import Navbar from "./components/Navbar/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Authwrapper from "./pages/Authwrapper";
 import ReqExceeded from "./pages/ReqExceeded";
 

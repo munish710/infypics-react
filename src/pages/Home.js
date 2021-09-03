@@ -1,5 +1,5 @@
 import React from "react";
-import Photos from "../components/Photos";
+import Photos from "../components/Photos/Photos";
 
 const Home = () => {
   return (

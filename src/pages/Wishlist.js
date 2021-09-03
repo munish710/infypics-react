@@ -1,5 +1,5 @@
 import React from "react";
-import SavedPhoto from "../components/SavedPhoto";
+import SavedPhoto from "../components/SavedPhoto/SavedPhoto";
 import { useAppContext } from "../context/context";
 import empty_images from "../assets/empty_images.svg";
 

@@ -1,6 +1,6 @@
 import React from "react";
-import SearchForm from "../components/SearchForm";
-import Photos from "../components/Photos";
+import SearchForm from "../components/SearchForm/SearchForm";
+import Photos from "../components/Photos/Photos";
 
 const Explore = () => {
   return (

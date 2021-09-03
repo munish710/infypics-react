@@ -1,6 +1,7 @@
 import React from "react";
-import { useAppContext } from "../context/context";
+import { useAppContext } from "../../context/context";
 import { FaSearch } from "react-icons/fa";
+import "./searchform.css";
 
 function SearchForm() {
   const { query, handleSubmit, setQuery } = useAppContext();

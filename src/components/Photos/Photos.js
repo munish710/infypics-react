@@ -1,7 +1,8 @@
 import React from "react";
-import { useAppContext } from "../context/context";
-import Loading from "./Loading";
-import Photo from "./Photo";
+import { useAppContext } from "../../context/context";
+import Loading from "../Loading/Loading";
+import Photo from "../Photo/Photo";
+import "./photos.css";
 
 function Photos() {
   const { photos, loading } = useAppContext();

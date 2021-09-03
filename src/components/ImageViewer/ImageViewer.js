@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import { useAppContext } from "../context/context";
+import { useAppContext } from "../../context/context";
+import "./imageviewer.css";
 
 const ImageViewer = () => {
   const { showImageViewer, setShowImageViewer, photos, currentImageIndex } =
