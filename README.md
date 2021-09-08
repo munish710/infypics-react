@@ -12,6 +12,7 @@ Want royalty free stock pictures for your next project or just love browsing loo
 ## Tech Stack
 
 - React
+- React Router
 - Unsplash API
 - Auth0
 
