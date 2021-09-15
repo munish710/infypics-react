@@ -33,7 +33,9 @@ const ImageViewer = () => {
   };
 
   useEffect(() => {
-    setImageUrl(photos[displayIndex].urls.regular);
+    if (photos[displayIndex]?.urls?.regular) {
+      setImageUrl(photos[displayIndex].urls.regular);
+    }
   }, [displayIndex, photos]);
 
   return (
