@@ -7,16 +7,23 @@ import { useSnackbar } from "react-simple-snackbar";
 import { options } from "../../utils/options";
 import "./savedphoto.css";
 
-const SavedPhoto = ({ id, urls, user, links }) => {
-  const { removeSavedImage } = useAppContext();
+const SavedPhoto = ({
+  imageID,
+  imageUrl,
+  postedByUrl,
+  postedByImageUrl,
+  postedByName,
+  downloadUrl,
+}) => {
+  const { removeSavedImage, downloadImage } = useAppContext();
   const [openSnackbar] = useSnackbar(options);
   const deleteImage = () => {
-    openSnackbar("Image removed successfully!");
-    removeSavedImage(id);
+    // openSnackbar("Image removed successfully!");
+    removeSavedImage(imageID);
   };
 
   const copyLink = () => {
-    navigator.clipboard.writeText(urls.full);
+    navigator.clipboard.writeText(imageUrl);
     openSnackbar("Copied to Clipboard successfully!");
   };
 
@@ -24,25 +31,25 @@ const SavedPhoto = ({ id, urls, user, links }) => {
     <article className="saved-photo">
       <div className="saved-photo-header">
         <a
-          href={user.portfolio_url}
+          href={postedByUrl}
           target="_blank"
           className="user-info"
           rel="noopener noreferrer"
         >
           <img
-            src={user.profile_image.medium}
+            src={postedByImageUrl}
             className="user-img"
             alt="profile"
             loading="lazy"
           />
-          <h4>{user.first_name}</h4>
+          <h4>{postedByName}</h4>
         </a>
         <button className="close-btn-2" onClick={deleteImage}>
           <CgClose />
         </button>
       </div>
 
-      <img src={urls.regular} alt="scenery" />
+      <img src={imageUrl} alt="scenery" />
       <div className="saved-photo-footer">
         <button className="link-btn" onClick={copyLink}>
           <span className="link-btn-icon">
@@ -50,17 +57,12 @@ const SavedPhoto = ({ id, urls, user, links }) => {
           </span>
           Copy Link
         </button>
-        <a
-          href={links.download}
-          target="_blank"
-          className="link-btn"
-          rel="noopener noreferrer"
-        >
+        <button className="link-btn" onClick={() => downloadImage(imageUrl)}>
           <span className="link-btn-icon">
             <AiOutlineArrowDown />
           </span>
           Download
-        </a>
+        </button>
       </div>
     </article>
   );
