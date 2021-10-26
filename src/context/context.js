@@ -20,6 +20,7 @@ function AppProvider({ children }) {
   const [showImageViewer, setShowImageViewer] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [savedImages, setSavedImages] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
 
   const [openSnackbar] = useSnackbar(options);
   const { user, isAuthenticated } = useAuth0();
@@ -108,14 +109,17 @@ function AppProvider({ children }) {
 
   const getSavedImages = async () => {
     try {
+      setIsFetching(true);
       const response = await axios.get(
         `${apiUrl}posts?userEmail=${user.email}`
       );
       if (response.data.success) {
         setSavedImages(response.data.savedImages);
+        setIsFetching(false);
       }
     } catch (error) {
       console.log("error", error);
+      setIsFetching(false);
     }
   };
 
@@ -172,6 +176,7 @@ function AppProvider({ children }) {
         saveImageinDB,
         getSavedImages,
         downloadImage,
+        isFetching,
       }}
     >
       {children}
