@@ -1,3 +1,5 @@
+import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 import React, { useContext, useState, useEffect } from "react";
 import { useSnackbar } from "react-simple-snackbar";
 import { options } from "../utils/options";
@@ -5,17 +7,9 @@ import { options } from "../utils/options";
 const clientID = `?client_id=${process.env.REACT_APP_ACCESS_KEY}`;
 const mainUrl = `https://api.unsplash.com/photos/`;
 const searchUrl = `https://api.unsplash.com/search/photos/`;
+const apiUrl = "https://infypics-backend.herokuapp.com/api/v1/";
 
 const AppContext = React.createContext();
-
-const getLocalStorage = () => {
-  let localSavedImages = localStorage.getItem("saved");
-  if (localSavedImages) {
-    return JSON.parse(localSavedImages);
-  } else {
-    return [];
-  }
-};
 
 function AppProvider({ children }) {
   const [loading, setLoading] = useState(false);
@@ -25,9 +19,10 @@ function AppProvider({ children }) {
   const [query, setQuery] = useState("");
   const [showImageViewer, setShowImageViewer] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [savedImages, setSavedImages] = useState(getLocalStorage());
+  const [savedImages, setSavedImages] = useState([]);
 
   const [openSnackbar] = useSnackbar(options);
+  const { user, isAuthenticated } = useAuth0();
 
   const fetchImages = async () => {
     let url;
@@ -76,9 +71,67 @@ function AppProvider({ children }) {
     setCurrentImageIndex(index);
   };
 
-  const removeSavedImage = (id) => {
-    let newSavedImages = savedImages.filter((item) => item.id !== id);
-    setSavedImages(newSavedImages);
+  const removeSavedImage = async (id) => {
+    try {
+      const response = await axios.delete(
+        `${apiUrl}posts/${id}?userEmail=${user.email}`
+      );
+
+      if (response.data.success) {
+        setSavedImages(response.data.savedImages);
+        openSnackbar("Image Removed Successfully");
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  const saveImageinDB = async (imageData) => {
+    try {
+      if (isAuthenticated) {
+        const finalData = { ...imageData, userEmail: user.email };
+        const response = await axios.post(`${apiUrl}posts`, finalData);
+
+        if (response.data.success) {
+          openSnackbar("Image Saved Successfully");
+        }
+      } else {
+        openSnackbar("Please login to save images!");
+      }
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        openSnackbar(error.response.data.message);
+      }
+      console.log("Error", error);
+    }
+  };
+
+  const getSavedImages = async () => {
+    try {
+      const response = await axios.get(
+        `${apiUrl}posts?userEmail=${user.email}`
+      );
+      if (response.data.success) {
+        setSavedImages(response.data.savedImages);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  const downloadImage = (imageUrl) => {
+    axios({
+      url: imageUrl,
+      method: "GET",
+      responseType: "blob", // important
+    }).then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "image.jpg");
+      document.body.appendChild(link);
+      link.click();
+    });
   };
 
   useEffect(() => {
@@ -101,10 +154,6 @@ function AppProvider({ children }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("saved", JSON.stringify(savedImages));
-  }, [savedImages]);
-
   return (
     <AppContext.Provider
       value={{
@@ -118,9 +167,11 @@ function AppProvider({ children }) {
         openImageViewer,
         currentImageIndex,
         savedImages,
-        setSavedImages,
         removeSavedImage,
         reqExceeded,
+        saveImageinDB,
+        getSavedImages,
+        downloadImage,
       }}
     >
       {children}
