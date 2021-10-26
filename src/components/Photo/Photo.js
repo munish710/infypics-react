@@ -1,19 +1,21 @@
 import React from "react";
 import { useAppContext } from "../../context/context";
 import { FaRegBookmark } from "react-icons/fa";
-import { useSnackbar } from "react-simple-snackbar";
-import { options } from "../../utils/options";
 import "./photo.css";
 
 const Photo = ({ id, urls, alt_description, likes, user, links, index }) => {
-  const { openImageViewer, setSavedImages, savedImages } = useAppContext();
-  const [openSnackbar] = useSnackbar(options);
-  const openHandler = () => {
-    openSnackbar("Image Saved Successfully");
-    const tempImages = [...savedImages];
-    const newImage = { id, urls, user, links };
-    tempImages.push(newImage);
-    setSavedImages([...tempImages]);
+  const { openImageViewer, saveImageinDB } = useAppContext();
+
+  const saveImage = () => {
+    const imageData = {
+      imageID: id,
+      imageUrl: urls.regular,
+      postedByUrl: user.portfolio_url,
+      postedByImageUrl: user.profile_image.medium,
+      postedByName: user.first_name,
+      downloadUrl: links.download,
+    };
+    saveImageinDB(imageData);
   };
   return (
     <article className="photo">
@@ -28,7 +30,7 @@ const Photo = ({ id, urls, alt_description, likes, user, links, index }) => {
           <h4>{user.name}</h4>
           <p>{likes} likes</p>
         </div>
-        <button className="generic-icon bookmark" onClick={openHandler}>
+        <button className="generic-icon bookmark" onClick={saveImage}>
           <FaRegBookmark />
         </button>
       </div>
